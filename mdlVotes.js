@@ -35,24 +35,6 @@ class Votes extends events.EventEmitter{
     showall(){
         this.emit('show');
     }
-    resetCount(){
-        console.log("Count Reset");
-    }
-
-
 }
 
-module.exports = resetCount = ()=>{
-    console.log("Count Reset");
-};
-
-module.exports= addCount = ()=>{
-    this.count++;
-};
-
-
-module.exports = (name)=>{
-    var E = new Votes(name);
-    return E;
-};
-
+module.exports = Votes;
