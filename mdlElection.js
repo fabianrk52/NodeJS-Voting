@@ -13,8 +13,6 @@ class Election{
     getName(){
         return this.name;
     }
-
-
 }
 
 module.exports = (name)=>{

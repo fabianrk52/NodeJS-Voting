@@ -1,8 +1,10 @@
-class Votes{
+var events = require ('events');
+
+
+class Votes extends events.EventEmitter{
     constructor(name){
         this.count=0;
         this.name=name;
-        console.log("Votes");
     }
     getName(){
         return this.name;
@@ -19,12 +21,15 @@ class Votes{
     }
     getCount(){
         return this.count;
+
     }
     reset(){
         this.count=0;
+        this.emit('reset');
     }
     addCount(){
         this.count++;
+        this.emit('count');
     }
 }
 
