@@ -1,11 +1,9 @@
 var events = require ('events');
     express = require('express'),
-    app = express(),
-    A = Array();
+    app = express();
 
-    module.exports=function printA(){
-        return A;
-    };
+    module.exports= Arr = Array();
+    const max =4;
 class Votes extends events.EventEmitter{
 
     constructor(name){
@@ -13,48 +11,43 @@ class Votes extends events.EventEmitter{
         this.count=0;
         this.name=name;
 
-        this.on("Vote",(name)=> {
-            console.log(`Vote in ${name}`);
-            A.push(`Vote in ${name}`);
-                
+        this.on("Vote",()=> {
+            if(this.count<max){
+                console.log(`Vote in ${this.name}`);
+                Arr.push(`Vote in ${this.name}`);
+                this.count++;
+                }
+            else{
+                console.log(`Cannot Vote in ${this.name}`);
+                Arr.push(`Cannot Vote in ${this.name}`)
+            }
         });
-        this.on("Reset",(name)=> {
-            console.log(`Reset in ${name}`);
-            A.push(`Reset in ${name}`);
+        this.on("Reset",()=> {
+            this.count=0;
+            console.log(`Reset in ${this.name}`);
+            Arr.push(`Reset in ${this.name}`)
         }); 
         this.on("data",()=>{
             console.log(`Data ${this.name}:`);
             console.log(this.getAllData());
-            A.push(this.getAllData());
+            Arr.push(this.getAllData());
         });
-    }
-    getName(){
-        return this.name;
     }
     getAllData(){
         return{
-            name:this.getName(),
-            count:this.getCount()
+            name:this.name,
+            count:this.count
        };
     }
-    setName(name){
-        this.name=name;
-    }
-    getCount(){
-        return this.count;
-    }
     reset(){
-        this.count=0;
-        this.emit("Reset", this.name);
+        this.emit("Reset");
     }
     addCount(){
-        this.count++;
-        this.emit("Vote",this.name);
+        this.emit("Vote");
     }
     Data(){
         this.emit("data");
     }
-
 }
 
 module.exports = Votes;

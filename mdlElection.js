@@ -1,23 +1,20 @@
 var events = require ('events');
 
-class Election{
+class Election extends events.EventEmitter {
     constructor(name){
+        super();
         this.name=name;
+        this.array = Array();
     } 
-    getAllData(){
-        return this.name;
+    addVote(vote){
+        this.array.push(vote);
     }
-    setName(name){
-        this.name=name;
-    }
-    getName(){
-        return this.name;
+    printAll(){
+        return{
+            name:this.name,
+        }
     }
 }
 
-module.exports = (name)=>{
-    var E = new Election(name);
-    return E;
-};
-
+module.exports=Election;
 

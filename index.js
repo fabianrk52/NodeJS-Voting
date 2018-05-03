@@ -1,4 +1,5 @@
-var votes= require ('./mdlVotes');
+var votes = require ('./mdlVotes');
+
     var A = Array();
     var name = ['A','B','C'];
     for(var i=0;i<name.length;i++){
@@ -11,8 +12,7 @@ var votes= require ('./mdlVotes');
     A[1].reset();
     A[0].Data();
     A[1].Data();
-
     app.listen(3000);
     app.get('/',(req, res)=>{
-        res.json("A");
+        res.send(Arr);
     });
