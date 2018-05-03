@@ -3,7 +3,6 @@ var events = require ('events');
 class Election{
     constructor(name){
         this.name=name;
-        console.log("Constructor");
     } 
     getAllData(){
         return this.name;
