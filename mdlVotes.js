@@ -31,12 +31,9 @@ class Votes extends events.EventEmitter{
     addCount(){
         this.count++;
         this.emit('count');
-<<<<<<< HEAD
     }
     showall(){
         this.emit('show');
-=======
->>>>>>> fabian
     }
 }
 
