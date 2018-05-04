@@ -1,5 +1,7 @@
 module.exports={
     events:{
-        Hello: 'hello',
+        Vote: "Vote",
+        Reset: "Reset",
+        Data: "Data"
     }
 };

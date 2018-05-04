@@ -1,6 +1,7 @@
 var events = require ('events');
     express = require('express'),
     app = express();
+    config = require ('./config').events;
 
     module.exports= Arr = Array();
     const max =4;
@@ -11,7 +12,7 @@ class Votes extends events.EventEmitter{
         this.count=0;
         this.name=name;
 
-        this.on("Vote",()=> {
+        this.on(config.Vote,()=> {
             if(this.count<max){
                 console.log(`Vote in ${this.name}`);
                 Arr.push(`Vote in ${this.name}`);
@@ -22,12 +23,12 @@ class Votes extends events.EventEmitter{
                 Arr.push(`Cannot Vote in ${this.name}`)
             }
         });
-        this.on("Reset",()=> {
+        this.on(config.Reset,()=> {
             this.count=0;
             console.log(`Reset in ${this.name}`);
             Arr.push(`Reset in ${this.name}`)
         }); 
-        this.on("data",()=>{
+        this.on(config.Data,()=>{
             console.log(`Data ${this.name}:`);
             console.log(this.getAllData());
             Arr.push(this.getAllData());
@@ -46,7 +47,7 @@ class Votes extends events.EventEmitter{
         this.emit("Vote");
     }
     Data(){
-        this.emit("data");
+        this.emit("Data");
     }
 }
 
