@@ -14,24 +14,27 @@ class Votes extends events.EventEmitter{
 
         this.on(config.Vote,()=> {
             if(this.count<max){
-                console.log(`Vote in ${this.name}`);
-                Arr.push(`Vote in ${this.name}`);
+                var tmpVote = `Vote in ${this.name}`;
+                console.log(tmpVote);
+                Arr.push(tmpVote);
                 this.count++;
                 }
             else{
-                console.log(`Cannot Vote in ${this.name}`);
-                Arr.push(`Cannot Vote in ${this.name}`)
+                var tmpNotVote = `Cannot Vote in ${this.name}`;
+                console.log(tmpNotVote);
+                Arr.push(tmpNotVote);
             }
         });
         this.on(config.Reset,()=> {
+            var tmpReset= `Reset in ${this.name}`;
+            console.log(tmpReset);
+            Arr.push(tmpReset);
             this.count=0;
-            console.log(`Reset in ${this.name}`);
-            Arr.push(`Reset in ${this.name}`)
         }); 
         this.on(config.Data,()=>{
-            console.log(`Data ${this.name}:`);
-            console.log(this.getAllData());
-            Arr.push(this.getAllData());
+            var tmpData = this.getAllData();
+            console.log(tmpData);
+            Arr.push(tmpData);
         });
     }
     getAllData(){

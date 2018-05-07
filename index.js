@@ -19,7 +19,7 @@ var votes = require ('./mdlVotes');
     A[0].Data();
     A[1].Data();
     A[2].Data();
-    app.listen(3000);
+    app.listen(8080);
     app.get('/',(req, res)=>{
         res.send(Arr);
     });
